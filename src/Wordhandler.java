@@ -6,7 +6,6 @@ import java.util.Random;
 
 
 public class Wordhandler {
-	private final static String NAME = Wordhandler.class.getName();
     private static String[] correctWord;
     
     public Wordhandler(){
