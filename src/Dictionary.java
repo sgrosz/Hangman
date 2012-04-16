@@ -5,7 +5,6 @@ import java.util.Random;
 
 
 public class Dictionary {
-    private final static String FILENAME = "Dictionary.txt";
     private static boolean dictionarysize = false;
     private static int sizeOfDictionary = 0;
     
