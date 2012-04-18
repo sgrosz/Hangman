@@ -3,30 +3,45 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
-
+/**
+ * Handles the dictionary in a file and gets a random word.
+ * 
+ * @author Sandra Grosz
+ * @version 2012-04-16
+ *
+ */
 public class Dictionary {
     private final static String FILENAME = "Dictionary.txt";
     private static boolean dictionarysize = false;
     private static int sizeOfDictionary = 0;
+    private static String lastWord = "";
     
     public Dictionary(){
-    	
     }
 
-	public static String createDictionary(){
+    /**
+     * Finds a random word from the dictionary in a file.
+     * 
+     * @return A random word.
+     */
+	public String createDictionary(){
         BufferedReader file = null;
-        String hangmanWord = "";
+        String hangmanWord = lastWord;
         try {            
             //Checks the size of the dictionary iff it has not been checked in the game already.
             if(dictionarysize == false){
             	sizeOfDictionary = sizeOfDictionary(file);
+            	System.out.println("Kollade storleken på ordboken");
             }
             
-            hangmanWord = readLineInDictionary(file);
+            while(hangmanWord.equals(lastWord)){
+            	hangmanWord = readLineInDictionary(file);
+            }
             
         } catch (IOException e) {
         }
         
+        lastWord = hangmanWord;
         return hangmanWord;
 	}
 	
@@ -37,7 +52,7 @@ public class Dictionary {
 	 * @return The number of words in the dictionary.
 	 * @throws IOException If an I/O error occurs
 	 */
-	private static int sizeOfDictionary(BufferedReader file) throws IOException{ //TODO
+	private int sizeOfDictionary(BufferedReader file) throws IOException{
 		// FileReader uses "the default character encoding".
         file = new BufferedReader(new FileReader(FILENAME));
         
@@ -62,7 +77,7 @@ public class Dictionary {
 	 * @return A random word in the dictionary.
 	 * @throws IOException
 	 */
-	private static String readLineInDictionary(BufferedReader file) throws IOException{
+	private String readLineInDictionary(BufferedReader file) throws IOException{
 		// FileReader uses "the default character encoding".
         file = new BufferedReader(new FileReader(FILENAME));
 		
@@ -80,5 +95,9 @@ public class Dictionary {
         }
 		
 		return line;
+	}
+	
+	private void checksLastWord(String newWord){
+		
 	}
 }
