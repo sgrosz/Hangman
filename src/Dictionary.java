@@ -31,7 +31,6 @@ public class Dictionary {
             //Checks the size of the dictionary iff it has not been checked in the game already.
             if(dictionarysize == false){
             	sizeOfDictionary = sizeOfDictionary(file);
-            	System.out.println("Kollade storleken på ordboken");
             }
             
             while(hangmanWord.equals(lastWord)){
@@ -56,9 +55,8 @@ public class Dictionary {
 		// FileReader uses "the default character encoding".
         file = new BufferedReader(new FileReader(FILENAME));
         
-        String line;
         int numberOfLines = 0;
-        while ((line = file.readLine()) != null) {
+        while ((file.readLine()) != null) {
         	numberOfLines++;
         }
         
@@ -94,10 +92,6 @@ public class Dictionary {
             file.close();
         }
 		
-		return line;
-	}
-	
-	private void checksLastWord(String newWord){
-		
+		return line.toLowerCase();
 	}
 }
