@@ -18,7 +18,7 @@ public class WordHandlerComputer implements WordHandler{
     	
     	correctWord = (temp.split("(?<=\\G.{1})"));
     	drawWord = new String[correctWord.length];
-    	Arrays.fill(drawWord, "__");
+    	Arrays.fill(drawWord, "__ ");
     	
     	if(Arrays.asList(correctWord).contains(" ")){
     		updateGuessedLetter(" ");
