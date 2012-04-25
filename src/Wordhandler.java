@@ -11,7 +11,7 @@ public interface WordHandler {
      * 
      * @return A array with the word.
      */
-	public String[] getGuessedLetters();
+	public String getGuessedLetters();
 	
 	/**
      * Checks if the guessed letter exists in the word. 

@@ -1,24 +1,13 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 
 public class MainGame {
 	private static JFrame gameWindow;
@@ -36,13 +25,11 @@ public class MainGame {
     	
     	content = new JPanel(new BorderLayout(1,3));
     	
-    	Menu menu = new Menu(gameWindow);
-    	menu.makeMenuBar();
+    	new Menu(gameWindow, WH, wordLabel);
+    	Menu.makeMenuBar();
     	
         wordLabel = new JLabel("", SwingConstants.CENTER);
         content.add(wordLabel, BorderLayout.CENTER);
-        WH = new WordHandlerMultiplayer();
-        WH.splitWord();
         
         Keyboard keyboard = new Keyboard(content, WH, wordLabel);
         keyboard.createKeyboard();
@@ -50,6 +37,7 @@ public class MainGame {
 		gameWindow.getContentPane().add(content);
         //creates and shows the menubar and the window
         gameWindow.setResizable(false);
+        //content.setVisible(false);
         gameWindow.setVisible(true);
 }
 	

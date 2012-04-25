@@ -1,12 +1,16 @@
 import java.util.Arrays;
 
+import javax.swing.JLabel;
+
 public class WordHandlerComputer implements WordHandler{
     private static String[] correctWord;
     private static String[] drawWord;
     private static Dictionary dictionary;
+    private static JLabel wordLabel;
     
-    public WordHandlerComputer(){
+    public WordHandlerComputer(JLabel wordLabel){
     	dictionary = new Dictionary();
+    	WordHandlerComputer.wordLabel = wordLabel;
     }
     
     /**
@@ -16,13 +20,14 @@ public class WordHandlerComputer implements WordHandler{
     public void splitWord(){
     	String temp = dictionary.createDictionary();
     	
-    	correctWord = (temp.toLowerCase().split("(?<=\\G.{1})"));
+    	correctWord = (temp.toUpperCase().split("(?<=\\G.{1})"));
     	drawWord = new String[correctWord.length];
     	Arrays.fill(drawWord, "__ ");
     	
     	if(Arrays.asList(correctWord).contains(" ")){
     		updateGuessedLetter("    ");
     	}
+    	wordLabel.setText(getGuessedLetters());
     }
     
     /**
@@ -30,8 +35,13 @@ public class WordHandlerComputer implements WordHandler{
      * 
      * @return A array with the word.
      */
-    public String[] getGuessedLetters(){
-    	return drawWord;
+    @Override
+    public String getGuessedLetters(){
+    	String temp = "";
+    	for(int i = 0; i < drawWord.length; i++){
+    		temp += drawWord[i];
+    	}
+    	return temp;
     }
     
     /**
@@ -40,8 +50,9 @@ public class WordHandlerComputer implements WordHandler{
      * @param guessedLetter
      * @return True if the word contains the guessed letter, else it returns false.
      */
+    @Override
     public boolean guessLetter(String guessedLetter){
-    	guessedLetter = guessedLetter.toLowerCase();
+    	guessedLetter = guessedLetter.toUpperCase();
     	if(Arrays.asList(correctWord).contains(guessedLetter)){
     		updateGuessedLetter(guessedLetter);
     		return true;
@@ -59,9 +70,12 @@ public class WordHandlerComputer implements WordHandler{
     private static void updateGuessedLetter(String guessedLetter){
     	
     	for(int a = 0; a < correctWord.length; a++){
-    		
     		if(correctWord[a].equals(guessedLetter)){
-    			drawWord[a] = guessedLetter;
+    			if(guessedLetter.equals(" ")){
+    				drawWord[a] = "   ";
+    			} else{
+    				drawWord[a] = guessedLetter;
+    			}
     		}
     	}
     }

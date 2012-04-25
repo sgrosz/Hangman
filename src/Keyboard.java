@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -18,9 +17,9 @@ public class Keyboard {
 	private static JLabel wordLabel;
 	
 	public Keyboard(JPanel content, WordHandler WH, JLabel wordLabel){
-		this.content = content;
-		this.WH = WH;
-		this.wordLabel = wordLabel;
+		Keyboard.content = content;
+		Keyboard.WH = WH;
+		Keyboard.wordLabel = wordLabel;
 	}
 
 	public void createKeyboard(){
@@ -58,11 +57,6 @@ public class Keyboard {
 	}
 	
 	private static void wordWriter(){
-		String [] word = WH.getGuessedLetters();
-		String temp = "";
-		for(int i = 0; i < word.length; i++){
-			temp += word[i];
-		}
-		wordLabel.setText(temp);
+		wordLabel.setText(WH.getGuessedLetters());
 	}
 }

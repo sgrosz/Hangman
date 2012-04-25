@@ -1,20 +1,28 @@
 import java.util.Arrays;
 
+import javax.swing.JLabel;
+
 
 public class WordHandlerMultiplayer implements WordHandler{
 	private static String[] correctWord;
     private static String[] drawWord;
+    private static JLabel wordLabel;
+    
+    public WordHandlerMultiplayer(JLabel wordLabel){
+    	WordHandlerMultiplayer.wordLabel = wordLabel;
+    }
 
     @Override
 	public void splitWord() {
     	String temp = "Jag är glad"; //TODO
     	
-    	correctWord = (temp.toLowerCase().split("(?<=\\G.{1})"));
+    	correctWord = (temp.toUpperCase().split("(?<=\\G.{1})"));
     	drawWord = new String[correctWord.length];
     	Arrays.fill(drawWord, "__ ");
     	if(Arrays.asList(correctWord).contains(" ")){
     		updateGuessedLetter(" ");
     	}
+    	wordLabel.setText(getGuessedLetters());
 	}
     
 	/**
@@ -23,8 +31,12 @@ public class WordHandlerMultiplayer implements WordHandler{
      * @return A array with the word.
      */
     @Override
-    public String[] getGuessedLetters(){
-    	return drawWord;
+    public String getGuessedLetters(){
+    	String temp = "";
+    	for(int i = 0; i < drawWord.length; i++){
+    		temp += drawWord[i];
+    	}
+    	return temp;
     }
     
     /**
@@ -35,6 +47,7 @@ public class WordHandlerMultiplayer implements WordHandler{
      */
     @Override
     public boolean guessLetter(String guessedLetter){
+    	guessedLetter = guessedLetter.toUpperCase();
     	if(Arrays.asList(correctWord).contains(guessedLetter)){
     		updateGuessedLetter(guessedLetter);
     		return true;
@@ -54,7 +67,7 @@ public class WordHandlerMultiplayer implements WordHandler{
     	for(int a = 0; a < correctWord.length; a++){
     		if(correctWord[a].equals(guessedLetter)){
     			if(guessedLetter.equals(" ")){
-    				drawWord[a] = "    ";
+    				drawWord[a] = "   ";
     			} else{
     				drawWord[a] = guessedLetter;
     			}

@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -10,9 +11,13 @@ import javax.swing.JOptionPane;
 
 public class Menu {
 	private static JFrame gameWindow;
+	private static WordHandler WH;
+	private static JLabel wordLabel;
 	
-	public Menu(JFrame gameWindow){
-		this.gameWindow = gameWindow;
+	public Menu(JFrame gameWindow, WordHandler WH, JLabel wordLabel){
+		Menu.gameWindow = gameWindow;
+		Menu.WH = WH;
+		Menu.wordLabel = wordLabel;
 	}
 
 	public static void makeMenuBar(){
@@ -36,11 +41,16 @@ public class Menu {
         //Creates the action for when you click any of the submenus
         singlePlayerItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+            	WH = new WordHandlerComputer(wordLabel);
+            	WH.splitWord();
             }
         });
         
         multiPlayerItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+            	WH = new WordHandlerMultiplayer(wordLabel);
+            	WH.splitWord();
+            	wordLabel.setText(WH.getGuessedLetters());
             }
         });
         
