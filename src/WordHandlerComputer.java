@@ -41,8 +41,11 @@ public class WordHandlerComputer implements WordHandler{
      * @return True if the word contains the guessed letter, else it returns false.
      */
     public boolean guessLetter(String guessedLetter){
+    	guessedLetter = guessedLetter.toLowerCase();
+    	System.out.println(guessedLetter);
     	if(Arrays.asList(correctWord).contains(guessedLetter)){
     		updateGuessedLetter(guessedLetter);
+    		System.out.println(Arrays.asList(drawWord).toString());
     		return true;
     	}
     	
