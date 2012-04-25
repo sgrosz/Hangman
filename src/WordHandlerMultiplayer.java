@@ -9,10 +9,9 @@ public class WordHandlerMultiplayer implements WordHandler{
 	public void splitWord() {
     	String temp = "Jag är glad"; //TODO
     	
-    	correctWord = (temp.split("(?<=\\G.{1})"));
+    	correctWord = (temp.toLowerCase().split("(?<=\\G.{1})"));
     	drawWord = new String[correctWord.length];
-    	Arrays.fill(drawWord, "__");
-    	System.out.println(Arrays.asList(correctWord).toString());
+    	Arrays.fill(drawWord, "__ ");
     	if(Arrays.asList(correctWord).contains(" ")){
     		updateGuessedLetter(" ");
     	}
@@ -38,7 +37,6 @@ public class WordHandlerMultiplayer implements WordHandler{
     public boolean guessLetter(String guessedLetter){
     	if(Arrays.asList(correctWord).contains(guessedLetter)){
     		updateGuessedLetter(guessedLetter);
-    		System.out.println(Arrays.asList(drawWord).toString());
     		return true;
     	}
     	
@@ -54,9 +52,12 @@ public class WordHandlerMultiplayer implements WordHandler{
     private static void updateGuessedLetter(String guessedLetter){
     	
     	for(int a = 0; a < correctWord.length; a++){
-    		
     		if(correctWord[a].equals(guessedLetter)){
-    			drawWord[a] = guessedLetter;
+    			if(guessedLetter.equals(" ")){
+    				drawWord[a] = "    ";
+    			} else{
+    				drawWord[a] = guessedLetter;
+    			}
     		}
     	}
     }

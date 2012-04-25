@@ -16,12 +16,12 @@ public class WordHandlerComputer implements WordHandler{
     public void splitWord(){
     	String temp = dictionary.createDictionary();
     	
-    	correctWord = (temp.split("(?<=\\G.{1})"));
+    	correctWord = (temp.toLowerCase().split("(?<=\\G.{1})"));
     	drawWord = new String[correctWord.length];
     	Arrays.fill(drawWord, "__ ");
     	
     	if(Arrays.asList(correctWord).contains(" ")){
-    		updateGuessedLetter(" ");
+    		updateGuessedLetter("    ");
     	}
     }
     
@@ -42,10 +42,8 @@ public class WordHandlerComputer implements WordHandler{
      */
     public boolean guessLetter(String guessedLetter){
     	guessedLetter = guessedLetter.toLowerCase();
-    	System.out.println(guessedLetter);
     	if(Arrays.asList(correctWord).contains(guessedLetter)){
     		updateGuessedLetter(guessedLetter);
-    		System.out.println(Arrays.asList(drawWord).toString());
     		return true;
     	}
     	
