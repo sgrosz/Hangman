@@ -1,12 +1,18 @@
 import java.awt.BorderLayout;
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+=======
+import java.awt.Color;
+import java.awt.List;
+>>>>>>> 2e0d5133e6bcdaa56fa22ed6345e81e07f8c302a
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+<<<<<<< HEAD
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -19,6 +25,23 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+=======
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+>>>>>>> 2e0d5133e6bcdaa56fa22ed6345e81e07f8c302a
 
 
 public class MainGame {
@@ -27,15 +50,26 @@ public class MainGame {
 	private static WordHandler WH;
 	private static JLabel wordLabel;
 
+	private static JFrame gameWindow;
+	private static JPanel panel;
+	private static WordHandler WH;
+	private static JLabel wordLabel;
+
 	public static void main(String[] args) {
-    	JFrame gameWindow = new JFrame();
+    	gameWindow = new JFrame();
     	gameWindow.setSize(800, 600);
-    	
+    	   	
     	gameWindow.setTitle("Hänga gubben");
+    	
     	
     	//Centers the frame in the screen
     	gameWindow.setLocationRelativeTo(null);
+
     	
+<<<<<<< HEAD
+=======
+    	    	
+>>>>>>> 2e0d5133e6bcdaa56fa22ed6345e81e07f8c302a
     	//Creates the menubar at the top of the window
     	JMenuBar menuBar = new JMenuBar();        
         
@@ -90,6 +124,7 @@ public class MainGame {
             }
         });
         wordLabel = new JLabel("");
+<<<<<<< HEAD
         content.add(wordLabel, BorderLayout.CENTER);
         WH = new WordHandlerComputer();
         WH.splitWord();
@@ -126,6 +161,12 @@ public class MainGame {
     	panel.setPreferredSize(new Dimension(600,120));
     	content.add(panel, BorderLayout.SOUTH);
 		gameWindow.getContentPane().add(content);
+=======
+        panel.add(wordLabel, BorderLayout.CENTER);
+        WH = new WordHandlerComputer();
+        WH.splitWord();
+        wordWriter();
+>>>>>>> 2e0d5133e6bcdaa56fa22ed6345e81e07f8c302a
         //creates and shows the menubar and the window
         gameWindow.setJMenuBar(menuBar);
         gameWindow.setResizable(false);
@@ -144,6 +185,7 @@ public class MainGame {
 		JFrame aboutWindow = new JFrame();
 		aboutWindow.setTitle("Om Hänga gubben");
 	    JOptionPane.showMessageDialog(aboutWindow, "Insert info om Hänga gubben här");
+<<<<<<< HEAD
 }
 	
 	private static void wordWriter(){
@@ -167,4 +209,30 @@ public class MainGame {
 		} catch (IOException e) {
 		}
 	} 	
+=======
+>>>>>>> 2e0d5133e6bcdaa56fa22ed6345e81e07f8c302a
 }
+	
+	private static void wordWriter(){
+		String [] word = WH.getGuessedLetters();
+		String temp = "";
+		for(int i = 0; i < word.length; i++){
+			temp += word[i];
+		}
+		wordLabel.setText(temp);
+	}
+	
+	//A method which draws an image
+	public static void drawImage(){
+		BufferedImage myPicture;
+		panel = new JPanel();
+		try {
+			
+			myPicture = ImageIO.read(new File("ful.jpg"));
+			JLabel picLabel = new JLabel(new ImageIcon( myPicture ));
+			panel.add( picLabel, BorderLayout.NORTH );
+		} catch (IOException e) {
+		}
+		gameWindow.getContentPane().add(panel);
+	}
+	}

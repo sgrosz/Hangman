@@ -53,7 +53,7 @@ public class WordHandlerComputer implements WordHandler{
     }
     
     /**
-     * Updates with the letters the user guessed iff the user guessed
+     * Updates with the letters the user guessed if the user guessed
      * a letter the word contains.
      * 
      * @param guessedLetter A string containing the guessed letter.
