@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -49,8 +50,21 @@ public class GameOptions {
         Keyboard keyboard = new Keyboard(content, WH, wordLabel);
         keyboard.createKeyboard();
         
-        content.revalidate();
-        
+        content.revalidate();  
 	}
+	
+	//A method which creates the helpwindow
+		public static void openHelpWindow(){
+			JFrame helpWindow = new JFrame();
+			helpWindow.setTitle("Hjälp");
+		    JOptionPane.showMessageDialog(helpWindow, "Insert hjälptext här");
+		}
+		
+		//A method which creates the about window
+		public static void openAboutWindow(){
+			JFrame aboutWindow = new JFrame();
+			aboutWindow.setTitle("Om Hänga gubben");
+		    JOptionPane.showMessageDialog(aboutWindow, "Insert info om Hänga gubben här");
+		}
 
 }

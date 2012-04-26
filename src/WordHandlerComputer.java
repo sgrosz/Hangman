@@ -27,7 +27,6 @@ public class WordHandlerComputer implements WordHandler{
     	if(Arrays.asList(correctWord).contains(" ")){
     		updateGuessedLetter("    ");
     	}
-    	System.out.println("Dator");
     	wordLabel.setText(getGuessedLetters());
     }
     

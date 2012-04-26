@@ -60,30 +60,16 @@ public class Menu {
         
         //Creates the action for when you click the menu "Visa hjälp"
         helpItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {openHelpWindow();
+            public void actionPerformed(ActionEvent arg0) {GameOptions.openHelpWindow();
             }
         });
         
       //Creates the action for when you click the menu "Om Hänga gubben"
         aboutItem.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {openAboutWindow();
+        	public void actionPerformed(ActionEvent arg0) {GameOptions.openAboutWindow();
             }
         });
         
         gameWindow.setJMenuBar(menuBar);
 	}
-	
-	//A method which creates the helpwindow
-	public static void openHelpWindow(){
-		JFrame helpWindow = new JFrame();
-		helpWindow.setTitle("Hjälp");
-	    JOptionPane.showMessageDialog(helpWindow, "Insert hjälptext här");
-}
-	
-	//A method which creates the about window
-	public static void openAboutWindow(){
-		JFrame aboutWindow = new JFrame();
-		aboutWindow.setTitle("Om Hänga gubben");
-	    JOptionPane.showMessageDialog(aboutWindow, "Insert info om Hänga gubben här");
-}
 }
