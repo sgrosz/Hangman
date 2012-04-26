@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,6 +17,8 @@ public class MainGame {
     	gameWindow.setLocationRelativeTo(null);
     	
     	content = new JPanel(new BorderLayout(1,3));
+    	
+    	content.setBackground(Color.WHITE);
         
 		gameWindow.getContentPane().add(content);
         //creates and shows the menubar and the window

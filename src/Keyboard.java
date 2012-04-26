@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -44,8 +45,11 @@ public class Keyboard {
     		final int placement = i;
     		buttons[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e){
-                	WH.guessLetter(temp);
-                	wordWriter();
+                	if(WH.guessLetter(temp)){
+                		wordWriter();
+                		System.out.println(WH.matchingWords());
+                	}
+                	
                 	buttons[placement].setEnabled(false);
                 }
             }); 
@@ -53,6 +57,7 @@ public class Keyboard {
     	}
     	
     	panel.setPreferredSize(new Dimension(600,120));
+    	panel.setBackground(Color.LIGHT_GRAY);
     	content.add(panel, BorderLayout.SOUTH);
 	}
 	

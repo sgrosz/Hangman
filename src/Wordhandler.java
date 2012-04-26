@@ -22,7 +22,10 @@ public interface WordHandler {
      */
 	public boolean guessLetter(String guessedLetter);
 	
-	
-	
+	/**
+	 * Checks if the guessed word matches the correct word.
+	 * @return True iff the words matches.
+	 */
+	public boolean matchingWords();
 
 }

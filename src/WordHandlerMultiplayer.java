@@ -7,14 +7,20 @@ public class WordHandlerMultiplayer implements WordHandler{
 	private static String[] correctWord;
     private static String[] drawWord;
     private static JLabel wordLabel;
+    private static String multiplayerWord;
     
-    public WordHandlerMultiplayer(JLabel wordLabel){
+    public WordHandlerMultiplayer(JLabel wordLabel, String multiplayerWord){
     	WordHandlerMultiplayer.wordLabel = wordLabel;
+    	WordHandlerMultiplayer.multiplayerWord = multiplayerWord;
+    }
+    
+    @Override
+    public void splitWord(){
+    	splitWordMultiplayer(multiplayerWord);
     }
 
-    @Override
-	public void splitWord() {
-    	String temp = "Jag är glad"; //TODO
+    public void splitWordMultiplayer(String multiPlayerWord) {
+    	String temp = multiplayerWord;
     	
     	correctWord = (temp.toUpperCase().split("(?<=\\G.{1})"));
     	drawWord = new String[correctWord.length];
@@ -74,5 +80,20 @@ public class WordHandlerMultiplayer implements WordHandler{
     		}
     	}
     }
+
+	@Override
+	public boolean matchingWords() {
+		String correct = "";
+		String guessedWord = "";
+    	for(int i = 0; i < drawWord.length; i++){
+    		if(drawWord[i].equals("   ")){
+    			guessedWord += " ";
+    		} else{
+    			guessedWord += drawWord[i];
+    		}
+    		correct += correctWord[i];
+    	}
+		return guessedWord.equals(correct);
+	}
 
 }

@@ -79,5 +79,10 @@ public class WordHandlerComputer implements WordHandler{
     		}
     	}
     }
+
+	@Override
+	public boolean matchingWords() {
+		return drawWord.equals(correctWord);
+	}
     
 }

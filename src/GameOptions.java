@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -6,12 +7,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-
 public class GameOptions {
 	private static JFrame gameWindow;
 	private static JPanel content;
 	private static WordHandler WH;
 	private static JLabel wordLabel;
+	private static String multiplayerWord;
 	
 	public GameOptions(JFrame gameWindow, JPanel content){
 		GameOptions.gameWindow = gameWindow;
@@ -24,6 +25,8 @@ public class GameOptions {
     	Menu.makeMenuBar();
     	
         wordLabel = new JLabel("", SwingConstants.CENTER);
+        wordLabel.setFont(new Font("Sansserif", Font.PLAIN, 25));
+        wordLabel.setSize(800, 50);
         content.add(wordLabel, BorderLayout.CENTER);
         
         WH = new WordHandlerComputer(wordLabel);
@@ -42,9 +45,12 @@ public class GameOptions {
     	Menu.makeMenuBar();
     	
         wordLabel = new JLabel("", SwingConstants.CENTER);
+        wordLabel.setFont(new Font("Sansserif", Font.PLAIN, 25));
+        wordLabel.setSize(800, 50);
         content.add(wordLabel, BorderLayout.CENTER);
         
-        WH = new WordHandlerMultiplayer(wordLabel);
+        enterMultiplayerWord();
+        WH = new WordHandlerMultiplayer(wordLabel, multiplayerWord);
         WH.splitWord();
         
         Keyboard keyboard = new Keyboard(content, WH, wordLabel);
@@ -65,6 +71,15 @@ public class GameOptions {
 			JFrame aboutWindow = new JFrame();
 			aboutWindow.setTitle("Om Hänga gubben");
 		    JOptionPane.showMessageDialog(aboutWindow, "Insert info om Hänga gubben här");
+		}
+		
+		//A method which creates the about window
+		public static void enterMultiplayerWord(){
+			JFrame enterWordWindow = new JFrame();
+			enterWordWindow.setTitle("Välj gissningsord");
+		    String temp = JOptionPane.showInputDialog(enterWordWindow, "Vilket ord vill ni spela hänga gubben med?" +
+		    		"\n(Se till att inte din medspelare ser vad du fyller i!) \n ", "Välj gissningsord", 3);
+		    multiplayerWord = temp;
 		}
 
 }
