@@ -82,7 +82,17 @@ public class WordHandlerComputer implements WordHandler{
 
 	@Override
 	public boolean matchingWords() {
-		return drawWord.equals(correctWord);
+		String correct = "";
+		String guessedWord = "";
+    	for(int i = 0; i < drawWord.length; i++){
+    		if(drawWord[i].equals("   ")){
+    			guessedWord += " ";
+    		} else{
+    			guessedWord += drawWord[i];
+    		}
+    		correct += correctWord[i];
+    	}
+		return guessedWord.equals(correct);
 	}
     
 }
