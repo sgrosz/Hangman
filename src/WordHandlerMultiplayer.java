@@ -22,6 +22,7 @@ public class WordHandlerMultiplayer implements WordHandler{
     	if(Arrays.asList(correctWord).contains(" ")){
     		updateGuessedLetter(" ");
     	}
+    	System.out.println("Vän");
     	wordLabel.setText(getGuessedLetters());
 	}
     
