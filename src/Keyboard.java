@@ -47,7 +47,11 @@ public class Keyboard {
                 public void actionPerformed(ActionEvent e){
                 	if(WH.guessLetter(temp)){
                 		wordWriter();
-                		System.out.println(WH.matchingWords());
+                		if(WH.matchingWords()){
+                			for(int a = 0; a < buttons.length; a++){
+                				buttons[a].setEnabled(false);
+                			}
+                		}
                 	}
                 	
                 	buttons[placement].setEnabled(false);

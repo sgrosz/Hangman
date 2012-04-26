@@ -27,7 +27,7 @@ public class Menu {
         menuBar.add(gameMenu);
         menuBar.add(helpMenu);
         
-        //Creates the menu "Nytt spel" with a submenu containing singleplayer and multiplayer choices
+      //Creates the menu "Nytt spel" with a submenu containing singleplayer and multiplayer choices
         JMenu newGame = new JMenu("Nytt spel");
         
         JMenuItem singlePlayerItem, multiPlayerItem;
@@ -66,6 +66,15 @@ public class Menu {
       //Creates the action for when you click the menu "Om Hänga gubben"
         aboutItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {GameOptions.openAboutWindow();
+            }
+        });
+        
+        JMenuItem endGame = new JMenuItem("Avsluta spelet");
+        gameMenu.add(endGame);
+        
+        endGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	System.exit(1);
             }
         });
         
