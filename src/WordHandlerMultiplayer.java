@@ -14,12 +14,13 @@ public class WordHandlerMultiplayer implements WordHandler{
     	WordHandlerMultiplayer.multiplayerWord = multiplayerWord;
     }
     
+
     @Override
     public void splitWord(){
     	splitWordMultiplayer(multiplayerWord);
     }
 
-    public void splitWordMultiplayer(String multiPlayerWord) {
+    private void splitWordMultiplayer(String multiPlayerWord) {
     	String temp = multiplayerWord;
     	
     	correctWord = (temp.toUpperCase().split("(?<=\\G.{1})"));
@@ -80,8 +81,22 @@ public class WordHandlerMultiplayer implements WordHandler{
     		}
     	}
     }
-
-	@Override
+    
+    /**
+     * Gets the updated word with the correctly guessed word.
+     * 
+     * @return A array with the word.
+     */
+    @Override
+    public String getCorrectWord(){
+    	String temp = "";
+    	for(int i = 0; i < correctWord.length; i++){
+    		temp += correctWord[i];
+    	}
+    	return temp;
+    }
+    
+    @Override
 	public boolean matchingWords() {
 		String correct = "";
 		String guessedWord = "";
@@ -95,5 +110,6 @@ public class WordHandlerMultiplayer implements WordHandler{
     	}
 		return guessedWord.equals(correct);
 	}
+
 
 }

@@ -6,8 +6,8 @@ import java.util.Random;
 /**
  * Handles the dictionary in a file and gets a random word.
  * 
- * @author Sandra Grosz
- * @version 2012-04-16
+ * @author Sandra Grosz and Denise Nordlöf
+ * @version Version 1
  *
  */
 public class Dictionary {

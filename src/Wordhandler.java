@@ -15,6 +15,13 @@ public interface WordHandler {
 	public String getGuessedLetters();
 	
 	/**
+     * Gets the updated word with the correctly guessed word.
+     * 
+     * @return A array with the word.
+     */
+	public String getCorrectWord();
+	
+	/**
      * Checks if the guessed letter exists in the word. 
      * 
      * @param guessedLetter
@@ -27,5 +34,6 @@ public interface WordHandler {
 	 * @return True iff the words matches.
 	 */
 	public boolean matchingWords();
+	
 
 }
